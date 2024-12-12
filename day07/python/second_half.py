@@ -33,6 +33,14 @@ def createOperators(number):
     return operators
 
 
+def combineNumbers(a, b):
+    x = str(a)
+    y = str(b)
+    combo = (x + y)
+    result = int(combo)
+    return result
+
+
 fullOperatorList = []
 for line in calibrationValues:
     number = len(line[1]) - 1
