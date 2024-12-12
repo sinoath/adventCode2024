@@ -49,7 +49,39 @@ def checkCalibration(target, values, operators):
     return False
 
 
-def comboValues(values):
+def comboValuesList(values: list):
+    maxIndex = len(values) - 1
+    tempList = []
+    numbers = values
+    cycle = 1
+    while cycle <= maxIndex:
+        tempList.append(combineNumbers(numbers[cycle - 1], numbers[cycle]))
+        cycle += 1
+    return tempList
+
+
+def concatenatedList(listOp, dataList):
+    lastIndex = len(listOp) - 1
+    result = []
+    cycle = 0
+    while cycle <= lastIndex:
+        temp = []
+        for i in range(len(dataList)):
+            if i == cycle:
+                temp.insert(i, listOp[i])
+                j = i + 2
+                while j <= (len(dataList) - 1):
+                    temp.insert(j, dataList[j])
+                    j += 1
+                break
+            temp.insert(i, dataList[i])
+            print("inside func: i = {} temp = {}".format(i, temp))
+        result.append(temp)
+        cycle += 1
+    return result
+
+
+def secondPassCheck(data):
     pass
 
 
