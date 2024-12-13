@@ -48,6 +48,8 @@ for line in calibrationValues:
 
 
 def checkCalibration(target, values, operators):
+    '''Check if the combinations of mul and add of values produces a result
+    equal to target. Return a boolean'''
     for el in operators:
         result = values[0]
         for i in range(len(el)):
@@ -57,7 +59,10 @@ def checkCalibration(target, values, operators):
     return False
 
 
-def comboValuesList(values: list):
+def adjacentCoupleList(values: list):
+    '''Given a list of number (values) return a list of the adjacent couples
+    combined together (15 and 21 combined is 1521). The combined numbers are
+    the first and the second, then the second and the third and so on'''
     maxIndex = len(values) - 1
     tempList = []
     numbers = values
@@ -68,8 +73,12 @@ def comboValuesList(values: list):
     return tempList
 
 
-def concatenatedList(listOp, dataList):
-    lastIndex = len(listOp) - 1
+def concatenatedList(comboedData, dataList):
+    '''Return a list where the combined data "x" in comboedData take place of
+    the couple of data "a" and "b" that compose "x" through combineNumbers(),
+    The returned list, is a list of lists where "x" is the first, second,
+    third (and so on) element'''
+    lastIndex = len(comboedData) - 1
     result = []
     cycle = 0
     while cycle <= lastIndex:
