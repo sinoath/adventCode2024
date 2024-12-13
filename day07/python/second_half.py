@@ -89,8 +89,14 @@ def concatenatedList(listOp, dataList):
     return result
 
 
-def secondPassCheck(data):
-    pass
+def valuePassCheck(values, operators):
+    result = []
+    for val, op in zip(values, operators):
+        target = val[0]
+        values = val[1]
+        if checkCalibration(target, values, op):
+            result.append(val)
+    return result
 
 
 for val, op in zip(calibrationValues, fullOperatorList):
