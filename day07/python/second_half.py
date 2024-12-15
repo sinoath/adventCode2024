@@ -21,6 +21,8 @@ for value in calibrationValues:
 
 
 def signedOperation(a, b, sign):
+    '''Based on the sign, return addition or multiplication result between
+    a and b'''
     if sign == "+":
         return a + b
     else:
@@ -28,12 +30,15 @@ def signedOperation(a, b, sign):
 
 
 def createOperators(number):
+    '''Return a list of all combination between symbols "+" and "*", repeated
+    "number" times'''
     symbols = ["*", "+"]
     operators = list(itertools.product(symbols, repeat=number))
     return operators
 
 
 def combineNumbers(a, b):
+    '''Combine "a" and "b" into a single number "ab"'''
     x = str(a)
     y = str(b)
     combo = (x + y)
@@ -128,3 +133,4 @@ for el in calibrationValues:
 uniqueValidCalibrations = set(validCalibrationValues)
 for el in uniqueValidCalibrations:
     print(el)
+
