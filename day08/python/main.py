@@ -1,8 +1,10 @@
 f = open("../test.txt", "r")
 content = []
+maxLineIndex = -1
 for line in f:
     line = line.strip()
     content.append(line)
+    maxLineIndex += 1
 f.close()
 antennasCoords = []
 index_line = -1
