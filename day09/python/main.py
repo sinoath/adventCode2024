@@ -1,16 +1,32 @@
-f = open("../test.txt", "r")
+f = open("../input.txt", "r")
 content = (f.readline()).strip()
 f.close()
-print(len(content))
-print(content)
 
 expandedString = ""
+fileSystemBlocks = list()
 for i in range(len(content)):
     if i % 2 == 0:
-        print(str(i // 2) * int(content[i]))
-        expandedString += (str(i // 2) * int(content[i]))
+        for k in range(int(content[i])):
+            fileSystemBlocks.append(i // 2)
     else:
-        print("." * int(content[i]))
-        expandedString += ("." * int(content[i]))
+        for k in range(int(content[i])):
+            fileSystemBlocks.append(".")
 
-print(expandedString)
+compactedFileSystem = list()
+for el in fileSystemBlocks:
+    compactedFileSystem.append(el)
+
+while "." in compactedFileSystem:
+    element = compactedFileSystem.pop()
+    index = compactedFileSystem.index(".")
+    compactedFileSystem[index] = element
+resultString = ""
+
+for el in compactedFileSystem:
+    resultString += str(el)
+
+checkSum = 0
+for k in range(len(compactedFileSystem)):
+    checkSum += (int(compactedFileSystem[k]) * k)
+
+print(checkSum)
