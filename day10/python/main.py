@@ -11,6 +11,16 @@ f.close()
 stringMaxIndex = len(content[0]) - 1
 
 
+def inGrid(coords):
+    x = coords[0]
+    if x < 0 or x > stringMaxIndex:
+        return False
+    y = coords[1]
+    if y < 0 or y > lineMaxIndex:
+        return False
+    return True
+
+
 def wholeprint(mylist: list):
     for el in mylist:
         print(el)
