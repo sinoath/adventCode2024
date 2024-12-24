@@ -36,6 +36,23 @@ def trailStartCoords(grid: list, target):
     return coords
 
 
+def nextHikingTrails(coords):
+    global content
+    result = []
+    charID, y = coords[0], coords[0]  # this is Y as coordinate
+    lineID, x = coords[1], coords[1]  # this is X as coordinate
+    value = int(content[lineID][charID])
+    nextStep = chr(value + 1)
+    up = [x, y - 1]
+    right = [x + 1, y]
+    down = [x, y + 1]
+    left = [x - 1, y]
+
+    if inGrid(up) and content:
+        pass
+    pass
+
+
 def main():
     trailHeads = trailStartCoords(content, "0")
     print(trailHeads)
