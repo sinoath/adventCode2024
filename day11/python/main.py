@@ -1,9 +1,11 @@
-f = open("../test.txt", "r")
+f = open("../input.txt", "r")
 conten = []
 for line in f:
     content = line.strip("\n")
 f.close()
 
+NUMBER_OF_BLINKS = 25
+LARGER_NUM_OF_BLINKS = 75
 stones = content.split(" ")
 
 
@@ -28,7 +30,6 @@ def multi2024(char):
     i = int(char)
     i *= 2024
     return str(i)
-    pass
 
 
 # testChar = "1013102030"
@@ -47,7 +48,32 @@ def multi2024(char):
 
 
 def main():
-    print("test")
+    # print(stones)
+    # print(len(stones[0]))
+    # print(len(stones[1]))
+    # print(len(stones[1]) // 2)
+    # print(2 % 2)
+    # for i in range(LARGER_NUM_OF_BLINKS):
+    for i in range(NUMBER_OF_BLINKS):
+
+        toBeSplitIndex = []
+        for i in range(len(stones)):
+            if stones[i] == "0":
+                stones[i] = "1"
+            elif (len(stones[i]) % 2) == 0:
+                # print(stones[i])
+                toBeSplitIndex.insert(0, i)
+                # temp = mySplit(stones[i])
+                # insertSplitStone(i, stones, temp)
+            else:
+                stones[i] = multi2024(stones[i])
+        for k in toBeSplitIndex:
+            temp = mySplit(stones[k])
+            insertSplitStone(k, stones, temp)
+
+    # print(toBeSplitIndex)
+    print(stones)
+    print(len(stones))
 
 
 if __name__ == "__main__":
