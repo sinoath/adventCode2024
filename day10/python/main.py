@@ -12,6 +12,8 @@ stringMaxIndex = len(content[0]) - 1
 
 
 def inGrid(coords):
+    '''Check if a pair of coordinates are inside or outside a grid.
+    Return a boolean'''
     x = coords[0]
     if x < 0 or x > stringMaxIndex:
         return False
@@ -22,11 +24,14 @@ def inGrid(coords):
 
 
 def wholeprint(mylist: list):
+    '''Just print line by line a list'''
     for el in mylist:
         print(el)
 
 
 def trailStartCoords(grid: list, target):
+    '''Return a list of starting point coordinates, given a list
+    of lines representing the grid'''
     y = -1
     coords = []
     for line in grid:
@@ -37,6 +42,8 @@ def trailStartCoords(grid: list, target):
 
 
 def nextHikingTrails(coords):
+    '''Return the coordinates of the next step of the hiking trail,
+    if the next step exist. Return [-1, -1] otherwise'''
     global content
     result = []
     charID, y = coords[0], coords[0]  # this is Y as coordinate
