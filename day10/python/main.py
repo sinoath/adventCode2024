@@ -45,11 +45,11 @@ def nextHikingTrails(coords):
     '''Return the coordinates of the next step of the hiking trail,
     if the next step exist. Return [-1, -1] otherwise'''
     global content
-    result = []
+    # result = []
     charID, y = coords[0], coords[0]  # this is Y as coordinate
     lineID, x = coords[1], coords[1]  # this is X as coordinate
     value = int(content[lineID][charID])
-    nextStep = chr(value + 1)
+    # nextStep = chr(value + 1)
     up = [x, y - 1]
     right = [x + 1, y]
     down = [x, y + 1]
@@ -57,11 +57,23 @@ def nextHikingTrails(coords):
 
     if inGrid(up) and content:
         pass
+
+    if inGrid(down) and content:
+        pass
+
+    if inGrid(left) and content:
+        pass
+
+    if inGrid(right) and content:
+        pass
+
     pass
 
 
 def main():
+    wholeprint(content)
     trailHeads = trailStartCoords(content, "0")
+    print()
     print(trailHeads)
     # wholeprint(content)
     print(*content[0])
