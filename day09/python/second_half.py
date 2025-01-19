@@ -1,8 +1,8 @@
-f = open("../test2.txt", "r")
+f = open("../test.txt", "r")
 content = (f.readline()).strip()
 f.close()
 
-expandedString = ""
+# content = "2333133121414131499"
 blocksOfFileSystem = list()
 for i in range(len(content)):
     fileLenght = int(content[i])
@@ -18,15 +18,10 @@ fileSystem = list()
 for el in blocksOfFileSystem:
     fileSystem.append(el)
 
-# while "." in compactedFileSystem:
-#     element = compactedFileSystem.pop()
-#     index = compactedFileSystem.index(".")
-#     compactedFileSystem[index] = element
-
 
 # Function for test only
 def strFileSystem(fileSys):
-    '''Print the a string representing file system, where dots are free space
+    '''Print a string representing file system, where dots are free space
     and numbers are file blocks'''
     resultString = ""
     for el in fileSys:
@@ -54,7 +49,7 @@ def moveFile(file, position):
 
 
 def findEnoughSpace(file):
-    '''Return the block position with enough free space to contain file.
+    '''Return the block position with enough free space to contain a file.
     Input is a list, with fileName and fileDimension in it'''
     global fileSystem
     position = -1
@@ -89,13 +84,6 @@ def rightmostFileValue():
     return -1
 
 
-# print(fileSystem)
-# value = rightmostFileValue()
-# index = indexFromValue(value)
-# block = fileSystem[index]
-# printFileSystem(fileSystem)
-# moveFile(block, 2)
-# print(fileSystem)
 strFS = strFileSystem(fileSystem)
 print(strFS)
 
@@ -111,20 +99,6 @@ while startingValue > 0:
 # for k in range(len(fileSystem) - 1, 0, - 1):
 strFileSystem(fileSystem)
 
-# tempFile = findFromValue(3)
-# print("rightmost value: ", rightmostFileValue())
-# print("tempFile: {} of type {}".format(tempFile, type(tempFile)))
-# print(findEnoughSpace(tempFile))
-# # try copyFile here
-# print(compactedFileSystem)
-# printFileSystem(compactedFileSystem)
-# testFile = compactedFileSystem[-1]
-# moveFile(testFile, 2)
-# printFileSystem(compactedFileSystem)
-# index = 19
-# testFile = compactedFileSystem[index]
-# moveFile(testFile, 8)
-# printFileSystem(compactedFileSystem)
 strFS = strFileSystem(fileSystem)
 print(strFS)
 
