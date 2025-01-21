@@ -43,4 +43,25 @@ print(listOfMachines)
 print()
 for el in listOfMachines:
     print(*el)
-# print(clawMachines[0])
+firstMach = listOfMachines[2]
+print(listOfMachines[0])
+aButton = buttonValues(firstMach[0])
+bButton = buttonValues(firstMach[1])
+prize = prizeCoords(firstMach[2])
+print(aButton, bButton, prize)
+sumX = 0
+sumY = 0
+results = []
+for a in range(101):
+    sumX = a * aButton[0]
+    for b in range(101):
+        sumY = b * bButton[0]
+        if sumX + sumY == prize[0]:
+            if (a * aButton[1] + b * bButton[1]) == prize[1]:
+                results.append([a, b])
+
+print(results)
+coin_spent = []
+for el in results:
+    coin_spent.append(3 * el[0] + el[1])
+print(coin_spent)
