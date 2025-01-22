@@ -57,7 +57,24 @@ for a in range(101):
             if (a * aButton[1] + b * bButton[1]) == prize[1]:
                 results.append([a, b])
 
-print(results)
+
+def coinSpend(aButton, bButton, prize):
+    '''Return how many times, if any, buttons have to be presed
+    to reach the prize'''
+    sumX = 0
+    sumY = 0
+    results = []
+    for a in range(101):
+        sumX = a * aButton[0]
+        for b in range(101):
+            sumY = b * bButton[0]
+            if sumX + sumY == prize[0]:
+                if (a * aButton[1] + b * bButton[1]) == prize[1]:
+                    results.append([a, b])
+    return results
+
+
+results = coinSpend(aButton, bButton, prize)
 coin_spent = []
 for el in results:
     coin_spent.append(3 * el[0] + el[1])
