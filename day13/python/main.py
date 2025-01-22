@@ -19,7 +19,6 @@ for line in content:
 def buttonValues(clawMach):
     '''Return button values for a given claw machine'''
     splitted = clawMach.split(",")
-    print(splitted)
     left = splitted[0].split("+")
     right = splitted[1].split("+")
     x = int(left[1])
@@ -36,7 +35,6 @@ def prizeCoords(string):
     right = splitted[1].split("=")
     x, y = int(left[1]), int(right[1])
     return [x, y]
-    pass
 
 
 print(listOfMachines)
@@ -44,7 +42,6 @@ print()
 for el in listOfMachines:
     print(*el)
 firstMach = listOfMachines[2]
-print(listOfMachines[0])
 aButton = buttonValues(firstMach[0])
 bButton = buttonValues(firstMach[1])
 prize = prizeCoords(firstMach[2])
