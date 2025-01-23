@@ -1,13 +1,12 @@
 f = open("../test.txt", "r")
 listOfMachines = []
-clawMachine = []
 indexMachine = -1
 content = []
 for line in f:
     content.append(line)
 f.close()
 
-count = 0
+clawMachine = []
 for line in content:
     elem = line.strip()
     clawMachine.append(elem)
