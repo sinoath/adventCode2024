@@ -36,27 +36,6 @@ def prizeCoords(string):
     return [x, y]
 
 
-print(listOfMachines)
-print()
-for el in listOfMachines:
-    print(*el)
-firstMach = listOfMachines[2]
-aButton = buttonValues(firstMach[0])
-bButton = buttonValues(firstMach[1])
-prize = prizeCoords(firstMach[2])
-print(aButton, bButton, prize)
-sumX = 0
-sumY = 0
-results = []
-for a in range(101):
-    sumX = a * aButton[0]
-    for b in range(101):
-        sumY = b * bButton[0]
-        if sumX + sumY == prize[0]:
-            if (a * aButton[1] + b * bButton[1]) == prize[1]:
-                results.append([a, b])
-
-
 def coinSpend(aButton, bButton, prize):
     '''Return how many times, if any, buttons have to be presed
     to reach the prize'''
@@ -73,8 +52,19 @@ def coinSpend(aButton, bButton, prize):
     return results
 
 
-results = coinSpend(aButton, bButton, prize)
-coin_spent = []
-for el in results:
-    coin_spent.append(3 * el[0] + el[1])
-print(coin_spent)
+def main():
+    firstMach = listOfMachines[2]
+    aButton = buttonValues(firstMach[0])
+    bButton = buttonValues(firstMach[1])
+    prize = prizeCoords(firstMach[2])
+
+    results = coinSpend(aButton, bButton, prize)
+    # print(results)
+    coin_spent = []
+    for el in results:
+        coin_spent.append(3 * el[0] + el[1])
+    print(min(coin_spent))
+
+
+if __name__ == "__main__":
+    main()
