@@ -1,4 +1,4 @@
-f = open("../test.txt", "r")
+f = open("../input.txt", "r")
 listOfMachines = []
 indexMachine = -1
 content = []
@@ -53,17 +53,25 @@ def coinSpend(aButton, bButton, prize):
 
 
 def main():
-    firstMach = listOfMachines[2]
-    aButton = buttonValues(firstMach[0])
-    bButton = buttonValues(firstMach[1])
-    prize = prizeCoords(firstMach[2])
+    results = []
+    for machine in listOfMachines:
+        aButton = buttonValues(machine[0])
+        bButton = buttonValues(machine[1])
+        prize = prizeCoords(machine[2])
 
-    results = coinSpend(aButton, bButton, prize)
-    # print(results)
+        results.append(coinSpend(aButton, bButton, prize))
+    print(results)
     coin_spent = []
     for el in results:
-        coin_spent.append(3 * el[0] + el[1])
-    print(min(coin_spent))
+        if el != []:  # not el:
+            temp = []
+            for combo in el:
+                temp.append(combo[0] * 3 + combo[1])
+            # print(el)
+            coin_spent.append(min(temp))
+    print(coin_spent)
+    minCoinsSpent = sum(x for x in coin_spent)
+    print(minCoinsSpent)
 
 
 if __name__ == "__main__":
