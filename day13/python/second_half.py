@@ -43,7 +43,8 @@ def coinSpend(aButton, bButton, prize):
     sumX = 0
     sumY = 0
     a_max = int(prize[0]) // int(aButton[0]) + 1
-    b_max = int(prize[1]) // int(bButton[0]) + 1
+    b_max = int(prize[0]) // int(bButton[0]) + 1
+    # print(a_max, b_max)
     results = []
     for a in range(101):
         sumX = a * aButton[0]
@@ -62,7 +63,8 @@ def newCoinSpend(aButton, bButton, prize):
     sumX = 0
     sumY = 0
     a_max = int(prize[0]) // int(aButton[0]) + 1
-    b_max = int(prize[1]) // int(bButton[0]) + 1
+    b_max = int(prize[0]) // int(bButton[0]) + 1
+    # print(a_max, b_max)
     results = []
     for a in range(a_max):
         sumX = a * aButton[0]
@@ -78,23 +80,30 @@ def main():
     results = []
     new_result = []
 
-    # for machine in listOfMachines:
-    #     aButton = buttonValues(machine[0])
-    #     bButton = buttonValues(machine[1])
-    #     prize = prizeCoords(machine[2])
-    #
-    #     results.append(coinSpend(aButton, bButton, prize))
+    for machine in listOfMachines:
+        aButton = buttonValues(machine[0])
+        bButton = buttonValues(machine[1])
+        prize = prizeCoords(machine[2])
+        results.append(coinSpend(aButton, bButton, prize))
+        new_result.append(newCoinSpend(aButton, bButton, prize))
 
-    machine = listOfMachines[17]
-    aButton = buttonValues(machine[0])
-    bButton = buttonValues(machine[1])
-    prize = prizeCoords(machine[2])
-    results.append(coinSpend(aButton, bButton, prize))
-    new_result.append(newCoinSpend(aButton, bButton, prize))
-    with open("./res_max.txt", "w") as f:
-        print(results, file=f)
-    f.close()
+    # machine = listOfMachines[17]
+    # aButton = buttonValues(machine[0])
+    # bButton = buttonValues(machine[1])
+    # prize = prizeCoords(machine[2])
+    # results.append(coinSpend(aButton, bButton, prize))
+    # new_result.append(newCoinSpend(aButton, bButton, prize))
+
+    # with open("./101_max.txt", "w") as f:
+    #     print(results, file=f)
+    # f.close()
+
+    # print("Result: ", results)
+    # print("new result: ", new_result)
+
     coin_spent = []
+    new_coin = []
+
     for el in results:
         if el != []:  # not el:
             temp = []
@@ -102,11 +111,22 @@ def main():
                 temp.append(combo[0] * 3 + combo[1])
             # print(el)
             coin_spent.append(min(temp))
-    with open("./max.txt", "w") as f:
-        print(coin_spent, file=f)
-    f.close()
+
+    for el in new_result:
+        if el != []:  # not el:
+            temp = []
+            for combo in el:
+                temp.append(combo[0] * 3 + combo[1])
+            # print(el)
+            new_coin.append(min(temp))
+
+    # with open("./101.txt", "w") as f:
+    #     print(coin_spent, file=f)
+    # f.close()
+
     minCoinsSpent = sum(x for x in coin_spent)
     print(minCoinsSpent)
+    print(sum(x for x in new_coin))
     # result should be 31623
 
 
