@@ -39,8 +39,11 @@ def prizeCoords(string):
 def coinSpend(aButton, bButton, prize):
     '''Return how many times, if any, buttons have to be presed
     to reach the prize'''
+    correction = 10000000000000
     sumX = 0
     sumY = 0
+    a_max = int(prize[0]) / int(aButton[0]) + 1
+    b_max = int(prize[1]) / int(bButton[0]) + 1
     results = []
     for a in range(101):
         sumX = a * aButton[0]
@@ -72,6 +75,7 @@ def main():
     print(coin_spent)
     minCoinsSpent = sum(x for x in coin_spent)
     print(minCoinsSpent)
+    # result should be 31623
 
 
 if __name__ == "__main__":
